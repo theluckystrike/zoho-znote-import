@@ -1,0 +1,12 @@
+.zoho-import-dialog .zoho-import-status {
+	padding: var(--size-4-3);
+	border: 1px solid var(--background-modifier-border);
+	border-radius: var(--radius-m);
+	background: var(--background-secondary);
+	color: var(--text-normal);
+	white-space: pre-wrap;
+}
+
+.zoho-import-dialog textarea {
+	min-height: 60px;
+}
