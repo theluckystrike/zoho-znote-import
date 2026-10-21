@@ -72,6 +72,8 @@ A write error can leave a partial import. The report lists the plan, so its coun
 
 ## Settings
 
+After a minor or major update, this plugin opens one What's new tab in the background. The tab and settings card suggest other NoteMods plugins and Zovo Chat and link to notemods.com for feedback ([privacy](https://notemods.com/privacy/)). The tab sends no data. Turn the tab off in Settings.
+
 The settings tab contains GitHub Sponsors sign-in, refresh, sign-out, and Pro status. Archive controls are in the import dialog. The output folder defaults to `Zoho import`; a comparison defaults to `Zoho review`. Change these names for separate runs.
 
 Pro mapping controls accept JSON objects with string values. Notebook folders map source notebook names to destination names. Field names can map `title`, `created`, `modified`, `color`, `tags`, and `notebook`. Enter a profile name and select Save profile (Pro). Reopen the dialog to select the saved profile.

@@ -6,6 +6,8 @@ import { SPONSORS, bindPro, isPro, resetPro } from './pro';
 import { DEFAULT_SETTINGS, ZohoZnoteImportSettingTab, normalizeSettings, type ZohoZnoteImportSettings } from './settings';
 import { planImport, readExport, safeFolder, type Profile, validateProfile } from './importer';
 import { ImportModal } from './modal';
+import { setupHello } from './hello/index';
+import WHATS_NEW from './whats-new.json';
 
 export interface CardIndex { version: 1; cards: Record<string, { digest: string; path: string }> }
 export function parseIndex(text: string): CardIndex {
@@ -19,6 +21,8 @@ export default class ZohoZnoteImportPlugin extends Plugin {
 	pro: SponsorsManager | null = null;
 	private busy = false;
 	async onload(): Promise<void> {
+		// First: "What's new" reads its state before the settings load (packages/hello). It does not wait.
+		setupHello(this, WHATS_NEW);
 		await this.loadSettings();
 		const pro = createGitHubSponsors(this.app, this.manifest.id, SPONSORS, this);
 		pro.init(); this.pro = pro; bindPro(pro);
