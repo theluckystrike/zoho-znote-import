@@ -1,8 +1,8 @@
 import { UI } from './copy';
-import { Notice, Plugin, TFile, normalizePath } from 'obsidian';
+import { Plugin, TFile, normalizePath } from 'obsidian';
 import type { SponsorsManager } from './license/index';
 import { createGitHubSponsors } from './license/github-obsidian';
-import { SPONSORS, bindPro, isPro, resetPro } from './pro';
+import { SPONSORS, bindPro, isPro, proNotice, resetPro } from './pro';
 import { DEFAULT_SETTINGS, ZohoZnoteImportSettingTab, normalizeSettings, type ZohoZnoteImportSettings } from './settings';
 import { planImport, readExport, safeFolder, type Profile, validateProfile } from './importer';
 import { ImportModal } from './modal';
@@ -30,7 +30,7 @@ export default class ZohoZnoteImportPlugin extends Plugin {
 		this.addSettingTab(tab); this.register(pro.onChange(() => tab.update()));
 		this.addCommand({ id: 'import', name: UI.importCommand, callback: () => this.openImport() });
 		this.addCommand({ id: 'compare', name: UI.compareCommand, callback: () => {
-			if (!isPro()) { new Notice(UI.needsPro); return; }
+			if (!isPro()) { proNotice(UI.needsPro); return; }
 			this.openImport(true);
 		} });
 		this.app.workspace.onLayoutReady(() => {

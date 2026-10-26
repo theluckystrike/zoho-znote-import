@@ -1,6 +1,6 @@
 {
 	"name": "zoho-znote-import",
-	"version": "1.1.0",
+	"version": "1.1.1",
 	"private": true,
 	"description": "Import Zoho ZNote exports as notes with card dates, tags, checklists, and local attachments.",
 	"main": "main.js",

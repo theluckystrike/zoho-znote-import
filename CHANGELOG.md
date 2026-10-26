@@ -1,5 +1,11 @@
 # zoho-znote-import
 
+## 1.1.1
+
+### Patch Changes
+
+- The Zoho Znote Import notice for a Pro feature now has a Sponsor on GitHub button.
+
 ## 1.1.0
 
 ### Minor Changes
