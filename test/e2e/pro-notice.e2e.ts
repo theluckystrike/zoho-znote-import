@@ -2,7 +2,7 @@ import { browser, expect } from '@wdio/globals';
 import { pluginId } from './load';
 
 // A free user runs the Pro command "Compare a later export". The shared Pro notice must show,
-// with a Sponsor on GitHub button that opens the Sponsors page with metadata_source=<plugin id>.
+// with a Sponsor on GitHub button that opens the one-time tab of the Sponsors page with metadata_source=<plugin id>.
 describe(`${pluginId} Pro notice`, function () {
 	it('shows the Sponsor on GitHub button when a free user runs a Pro command', async function () {
 		await browser.executeObsidianCommand(`${pluginId}:compare`);
@@ -16,7 +16,7 @@ describe(`${pluginId} Pro notice`, function () {
 		});
 		expect(notice.label).toBe('Sponsor on GitHub');
 		expect(notice.text).toContain('Card comparison needs Pro.');
-		expect(notice.text).toContain('Sponsor on GitHub, then sign in from the plugin settings.');
+		expect(notice.text).toContain('One payment turns on Pro in every NoteMods plugin. Sponsor on GitHub, then sign in from the plugin settings.');
 		// The button opens the Sponsors page. window.open is replaced for this click only, so no page opens.
 		const url = await browser.execute(() => {
 			const w = window as unknown as { open: (u?: string) => unknown };
@@ -33,7 +33,7 @@ describe(`${pluginId} Pro notice`, function () {
 			}
 			return opened;
 		});
-		expect(url).toBe(`https://github.com/sponsors/theluckystrike?metadata_source=${pluginId}`);
+		expect(url).toBe(`https://github.com/sponsors/theluckystrike?frequency=one-time&metadata_source=${pluginId}-all`);
 		// The free user gets no comparison dialog.
 		expect(await browser.execute(() => document.querySelector('.zoho-import-dialog'))).toBeNull();
 	});
