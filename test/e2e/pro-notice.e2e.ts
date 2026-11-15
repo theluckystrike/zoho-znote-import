@@ -33,7 +33,7 @@ describe(`${pluginId} Pro notice`, function () {
 			}
 			return opened;
 		});
-		expect(url).toBe(`https://github.com/sponsors/theluckystrike?frequency=one-time&metadata_source=${pluginId}-all`);
+		expect(url).toBe(`https://github.com/sponsors/theluckystrike/sponsorships?tier_id=666162&frequency=one-time&metadata_source=${pluginId}-all`);
 		// The free user gets no comparison dialog.
 		expect(await browser.execute(() => document.querySelector('.zoho-import-dialog'))).toBeNull();
 	});
